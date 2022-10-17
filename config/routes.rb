@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   get 'reserves/index'
 
   get 'users/home_top'
