@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
+def home_top
   end
-  def home_top
-
+  def index
   end
 end
