@@ -6,13 +6,40 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
    #GET /resource/sign_up
    def new
-    @user = User.new
+
    end
 
  #POST /resource
-  def create
+ def create
 
-   end
+  @user = User.new(params.require(:user).permit(:name, :email, :password,:password_confirmation,:encrypted_password,:reset_password_token ,:reset_password_sent_at, :remember_created_at))
+
+
+
+
+
+
+  if @user.save
+
+ # binding.pry
+
+  flash[:notice] = "ユーザーを新規登録しました"
+
+  redirect_to :users
+
+  else
+
+
+
+  #こちらの処理が実行されます。
+
+  render "new", status: :unprocessable_entity
+
+  #上のようにstatus: :unprocessable_entity をつけてあげないと、エラーメッセージ付きのフォームが描画されません。
+
+  end
+
+  end
 
    #GET /resource/edit
    def edit
